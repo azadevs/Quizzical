@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/viewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/home_background">
+
+            <ImageView
+                android:id="@+id/iv_score"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/background_score"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.55"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.35"
+                app:layout_constraintWidth_percent="0.55" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_score"
+                android:textColor="?colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_score"
+                app:layout_constraintEnd_toEndOf="@id/iv_score"
+                app:layout_constraintStart_toStartOf="@id/iv_score"
+                app:layout_constraintTop_toTopOf="@id/iv_score"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <TextView
+                android:id="@+id/tv_score_count"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/iv_score"
+                app:layout_constraintEnd_toEndOf="@id/iv_score"
+                app:layout_constraintStart_toStartOf="@id/iv_score"
+                app:layout_constraintTop_toBottomOf="@id/tv_score"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="12451pt" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_score"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="@+id/viewBackground"
+        app:layout_constraintEnd_toEndOf="@+id/viewBackground"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="@+id/viewBackground"
+        app:layout_constraintTop_toBottomOf="@+id/viewBackground"
+        app:layout_constraintWidth_percent="0.8">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="7dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guid1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <ImageView
+                android:id="@+id/dot1"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/ic_tickness"
+                app:layout_constraintBottom_toTopOf="@id/dot3"
+                app:layout_constraintEnd_toStartOf="@id/guid1"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/completePerTv"
+                style="@style/TextViews"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/dot1"
+                app:layout_constraintEnd_toStartOf="@id/guid1"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@id/dot1"
+                app:layout_constraintTop_toTopOf="@id/dot1"
+                tools:text="100%" />
+
+            <TextView
+                android:id="@+id/completeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/completion"
+                app:layout_constraintStart_toStartOf="@id/completePerTv"
+                app:layout_constraintTop_toBottomOf="@id/completePerTv" />
+
+            <ImageView
+                android:id="@+id/dot2"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/ic_tickness"
+                app:layout_constraintBottom_toTopOf="@id/dot4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@id/guid1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/totalQuestionTv"
+                style="@style/TextViews"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/dot2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@id/dot2"
+                app:layout_constraintTop_toTopOf="@id/dot2"
+                tools:text="05" />
+
+            <TextView
+                android:id="@+id/totalTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_question"
+                app:layout_constraintStart_toStartOf="@id/totalQuestionTv"
+                app:layout_constraintTop_toBottomOf="@id/totalQuestionTv" />
+
+
+            <View
+                android:id="@+id/dot3"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/ic_tickness"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guid1"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dot1" />
+
+            <TextView
+                android:id="@+id/correctCountTv"
+                style="@style/TextViews"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/dot3"
+                app:layout_constraintEnd_toStartOf="@id/guid1"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@id/dot3"
+                app:layout_constraintTop_toTopOf="@id/dot3"
+                tools:text="03" />
+
+            <TextView
+                android:id="@+id/correctTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/correct"
+                app:layout_constraintStart_toStartOf="@id/correctCountTv"
+                app:layout_constraintTop_toBottomOf="@id/correctCountTv" />
+
+
+            <View
+                android:id="@+id/dot4"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/ic_tickness"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@id/guid1"
+                app:layout_constraintTop_toBottomOf="@id/dot2" />
+
+            <TextView
+                android:id="@+id/in_correct_count_tv"
+                style="@style/TextViews"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/dot4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toEndOf="@id/dot4"
+                app:layout_constraintTop_toTopOf="@id/dot4"
+                tools:text="02" />
+
+            <TextView
+                android:id="@+id/wrongTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_wrong"
+                app:layout_constraintStart_toStartOf="@id/in_correct_count_tv"
+                app:layout_constraintTop_toBottomOf="@id/in_correct_count_tv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <ImageButton
+        android:id="@+id/geoBtn"
+        style="@style/MenuButtons"
+        android:backgroundTint="#5493B4"
+        android:contentDescription="@string/this_is_a_image_button"
+        android:src="@drawable/ic_baseline_map_24"
+        app:layout_constraintBottom_toTopOf="@id/leaderBoardBtn"
+        app:layout_constraintEnd_toStartOf="@id/sportBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_score" />
+
+    <TextView
+        android:id="@+id/textGeo"
+        style="@style/TextViews"
+        android:text="@string/geography"
+        app:layout_constraintEnd_toEndOf="@id/geoBtn"
+        app:layout_constraintStart_toStartOf="@id/geoBtn"
+        app:layout_constraintTop_toBottomOf="@id/geoBtn" />
+
+    <ImageButton
+        android:id="@+id/musicBtn"
+        style="@style/MenuButtons"
+        android:backgroundTint="#755ED4"
+        android:contentDescription="@string/this_is_a_image_button"
+        android:src="@drawable/ic_baseline_music_note_24"
+        app:layout_constraintBottom_toTopOf="@id/shareBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sportBtn"
+        app:layout_constraintTop_toBottomOf="@id/card_score" />
+
+    <TextView
+        android:id="@+id/textMusic"
+        style="@style/TextViews"
+        android:text="@string/music"
+        app:layout_constraintEnd_toEndOf="@id/musicBtn"
+        app:layout_constraintStart_toStartOf="@id/musicBtn"
+        app:layout_constraintTop_toBottomOf="@id/musicBtn" />
+
+
+    <ImageButton
+        android:id="@+id/sportBtn"
+        style="@style/MenuButtons"
+        android:backgroundTint="#BF8E6E"
+        android:src="@drawable/ic_baseline_sports_soccer_24"
+        app:layout_constraintBottom_toTopOf="@id/exitAppBtn"
+        app:layout_constraintEnd_toStartOf="@id/musicBtn"
+        app:layout_constraintStart_toEndOf="@id/geoBtn"
+        app:layout_constraintTop_toBottomOf="@id/card_score" />
+
+    <TextView
+        android:id="@+id/textSport"
+        style="@style/TextViews"
+        android:text="@string/sport"
+        app:layout_constraintEnd_toEndOf="@id/sportBtn"
+        app:layout_constraintStart_toStartOf="@id/sportBtn"
+        app:layout_constraintTop_toBottomOf="@id/sportBtn" />
+
+    <ImageButton
+        android:id="@+id/leaderBoardBtn"
+        style="@style/MenuButtons"
+        android:backgroundTint="#0099E8"
+        android:contentDescription="@string/this_is_a_image_button"
+        android:src="@drawable/ic_baseline_leaderboard_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/exitAppBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textGeo"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/textLeader"
+        style="@style/TextViews"
+        android:text="@string/leaderboard"
+        app:layout_constraintEnd_toEndOf="@id/leaderBoardBtn"
+        app:layout_constraintStart_toStartOf="@id/leaderBoardBtn"
+        app:layout_constraintTop_toBottomOf="@id/leaderBoardBtn" />
+
+
+    <ImageButton
+        android:id="@+id/exitAppBtn"
+        style="@style/MenuButtons"
+        android:backgroundTint="#C872A5"
+        android:contentDescription="@string/this_is_a_image_button"
+        android:src="@drawable/ic_baseline_exit_to_app_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/shareBtn"
+        app:layout_constraintStart_toEndOf="@id/leaderBoardBtn"
+        app:layout_constraintTop_toBottomOf="@id/textSport"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/textExit"
+        style="@style/TextViews"
+        android:text="@string/exit"
+        app:layout_constraintEnd_toEndOf="@id/exitAppBtn"
+        app:layout_constraintStart_toStartOf="@id/exitAppBtn"
+        app:layout_constraintTop_toBottomOf="@id/exitAppBtn" />
+
+
+    <ImageButton
+        android:id="@+id/shareBtn"
+        style="@style/MenuButtons"
+        android:backgroundTint="#71758D"
+        android:contentDescription="@string/this_is_a_image_button"
+        android:src="@drawable/ic_baseline_share_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/exitAppBtn"
+        app:layout_constraintTop_toBottomOf="@id/textMusic"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/textShare"
+        style="@style/TextViews"
+        android:text="@string/share_score"
+        app:layout_constraintEnd_toEndOf="@id/shareBtn"
+        app:layout_constraintStart_toStartOf="@id/shareBtn"
+        app:layout_constraintTop_toBottomOf="@id/shareBtn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
