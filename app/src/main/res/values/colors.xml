@@ -1,13 +1,13 @@
 <resources>
-    <color name="Main">#A42FC1</color>
-    <color name="White">#FFFFFF</color>
-    <color name="Black">#000000</color>
-    <color name="Tomato">#FA3939</color>
-    <color name="ForestGreen">#1F8435</color>
-    <color name="SteelBlue">#1d7fa9</color>
-    <color name="CornFlowerBlue">#CB9771</color>
-    <color name="LightBlue">#6680DB</color>
-    <color name="LightSeaGreen">#37AFA1</color>
-    <color name="MediumPurple">#AD8AE8</color>
-    <color name="DimGray">#5F6A6E</color>
+    <color name="main">#A45EDA</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="tomato">#FA3939</color>
+    <color name="forestGreen">#1F8435</color>
+    <color name="steelBlue">#1d7fa9</color>
+    <color name="cornFlowerBlue">#CB9771</color>
+    <color name="lightBlue">#6680DB</color>
+    <color name="lightSeaGreen">#37AFA1</color>
+    <color name="mediumPurple">#AD8AE8</color>
+    <color name="dimGray">#5F6A6E</color>
 </resources>
