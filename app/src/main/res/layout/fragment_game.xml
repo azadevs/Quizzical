@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".ui.game.GameFragment">
 
     <FrameLayout
         android:id="@+id/frame_question_board"
@@ -54,17 +55,19 @@
         android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="?selectableItemBackground"
+        android:background="@drawable/ripple_effect_circle"
+        android:backgroundTint="@color/main"
         android:clickable="true"
         android:contentDescription="@string/back_button"
         android:focusable="true"
+        android:padding="5dp"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintBottom_toTopOf="@id/card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="@id/frame_question_board"
         app:layout_constraintTop_toTopOf="@id/frame_question_board"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.15" />
 
 
     <com.google.android.material.card.MaterialCardView

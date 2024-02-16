@@ -62,6 +62,7 @@
         android:background="@drawable/ripple_effect_circle"
         android:backgroundTint="@color/main"
         android:clickable="true"
+        android:contentDescription="@string/profile"
         android:focusable="true"
         android:padding="5dp"
         android:src="@drawable/ic_person"
@@ -70,8 +71,7 @@
         app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02"
-        android:contentDescription="@string/profile" />
+        app:layout_constraintVertical_bias="0.02" />
 
     <ImageView
         android:id="@+id/iv_score"
@@ -267,12 +267,12 @@
         android:backgroundTint="@color/steelBlue"
         android:contentDescription="@string/general"
         android:src="@drawable/ic_general"
-        app:layout_constraintBottom_toTopOf="@id/btn_leader_board"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/card_score_board"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="@id/card_score_board"
         app:layout_constraintTop_toBottomOf="@id/card_score_board"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/tv_general"
@@ -289,12 +289,12 @@
         android:backgroundTint="@color/lightBlue"
         android:contentDescription="@string/entertainment"
         android:src="@drawable/ic_entertainment"
-        app:layout_constraintBottom_toTopOf="@id/btn_share_score"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/card_score_board"
         app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toStartOf="@id/card_score_board"
         app:layout_constraintTop_toBottomOf="@id/card_score_board"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/tv_entertainment"
@@ -312,11 +312,11 @@
         android:backgroundTint="@color/cornFlowerBlue"
         android:contentDescription="@string/science"
         android:src="@drawable/ic_science"
-        app:layout_constraintBottom_toTopOf="@id/btn_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_entertainment"
         app:layout_constraintStart_toEndOf="@id/btn_general"
         app:layout_constraintTop_toBottomOf="@id/card_score_board"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/tv_science"
@@ -334,11 +334,10 @@
         android:contentDescription="@string/leaderboard"
         android:src="@drawable/ic_leaderboard"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/card_score_board"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintEnd_toStartOf="@id/btn_share_score"
         app:layout_constraintStart_toStartOf="@id/card_score_board"
         app:layout_constraintTop_toBottomOf="@id/tv_general"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/tv_leader_board"
@@ -349,28 +348,6 @@
         app:layout_constraintStart_toStartOf="@id/btn_leader_board"
         app:layout_constraintTop_toBottomOf="@id/btn_leader_board" />
 
-
-    <ImageButton
-        android:id="@+id/btn_exit"
-        style="@style/CustomMenuButton"
-        android:backgroundTint="@color/mediumPurple"
-        android:contentDescription="@string/exit"
-        android:src="@drawable/ic_exit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_share_score"
-        app:layout_constraintStart_toEndOf="@id/btn_leader_board"
-        app:layout_constraintTop_toBottomOf="@id/tv_science"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <TextView
-        android:id="@+id/tv_exit"
-        style="@style/CustomMenuTextView"
-        android:layout_marginTop="4dp"
-        android:text="@string/exit"
-        app:layout_constraintEnd_toEndOf="@id/btn_exit"
-        app:layout_constraintStart_toStartOf="@id/btn_exit"
-        app:layout_constraintTop_toBottomOf="@id/btn_exit" />
-
     <ImageButton
         android:id="@+id/btn_share_score"
         style="@style/CustomMenuButton"
@@ -379,10 +356,9 @@
         android:src="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/card_score_board"
-        app:layout_constraintHorizontal_bias="0.94"
-        app:layout_constraintStart_toStartOf="@id/card_score_board"
+        app:layout_constraintStart_toEndOf="@id/btn_leader_board"
         app:layout_constraintTop_toBottomOf="@id/tv_entertainment"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/tv_share_score"
