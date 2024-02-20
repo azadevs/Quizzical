@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="CustomMenuButton">
+    <style name="HomeScreenButtonStyle">
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="android:layout_width">55dp</item>
         <item name="android:layout_height">55dp</item>
-        <item name="android:background">@drawable/circle_image_background</item>
+        <item name="android:background">@drawable/ripple_effect_circle</item>
     </style>
 
-    <style name="CustomTextView">
+    <style name="HomeScreenTextViewStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">4dp</item>
-        <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
 
-    <style name="CustomRadioButton">
-        <item name="android:layout_width">wrap_content</item>
+    <style name="GameScreenRadioButtonStyle">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginVertical" tools:targetApi="o">7dp</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:background">@drawable/radio_button_background</item>
+        <item name="android:layout_marginVertical" tools:targetApi="o">6dp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:layoutDirection">rtl</item>
     </style>
 
@@ -33,16 +34,39 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
-    <style name="CustomDialog" parent="android:Theme.Holo.Dialog">
+    <style name="CustomWinDialog" parent="android:Theme.Holo.Dialog">
         <item name="android:windowMinWidthMajor">70%</item>
         <item name="android:windowMinWidthMinor">70%</item>
     </style>
-    
-    <style name="CustomTicknessImage">
-        <item name="android:layout_width">12dp</item>
-        <item name="android:layout_height">12dp</item>
-        <item name="android:background">@drawable/ic_tickness</item>
-        <item name="layout_constraintHorizontal_bias">0.1</item>
+
+    <style name="CircleShapeableImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ProfileTextInputLayoutStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">16dp</item>
+    </style>
+
+    <style name="ProfileEditTextStyle">
+        <item name="android:importantForAutofill" tools:targetApi="o">no</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CustomButtonShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">30dp</item>
+        <item name="cornerSizeBottomRight">30dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
     </style>
 
 </resources>
