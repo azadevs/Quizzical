@@ -10,8 +10,9 @@
     <FrameLayout
         android:id="@+id/frame_question_board"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="0dp"
         android:background="@drawable/cut_corners_background"
+        app:layout_constraintHeight_percent="0.35"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -74,13 +75,14 @@
         android:id="@+id/card"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="200dp"
         app:cardCornerRadius="25dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="@+id/frame_question_board"
         app:layout_constraintEnd_toEndOf="@+id/frame_question_board"
         app:layout_constraintStart_toStartOf="@+id/frame_question_board"
         app:layout_constraintTop_toBottomOf="@+id/frame_question_board"
-        app:layout_constraintWidth_percent="0.9">
+        app:layout_constraintWidth_percent="0.95">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,7 +108,7 @@
                 android:id="@+id/correctProgressBar"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:max="100"
+                android:max="20"
                 app:indicatorColor="#1F8435"
                 app:layout_constraintBottom_toBottomOf="@id/count_correct_tv"
                 app:layout_constraintStart_toEndOf="@id/count_correct_tv"
@@ -133,7 +135,7 @@
                 android:id="@+id/inCorrectProgressBar"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:max="100"
+                android:max="20"
                 app:indicatorColor="#D05A03"
                 app:indicatorDirectionLinear="leftToRight"
                 app:layout_constraintBottom_toBottomOf="@id/count_incorrect_tv"
@@ -146,28 +148,24 @@
                 android:id="@+id/tv_question_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_bold"
                 android:textAlignment="center"
                 android:textColor="@color/main"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintTop_toBottomOf="@id/correctProgressBar"
                 tools:text="@tools:sample/lorem" />
 
             <TextView
                 android:id="@+id/tv_question"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginHorizontal="10dp"
-                android:maxLines="6"
-                android:paddingBottom="5dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:maxLines="5"
                 android:textAlignment="center"
                 android:textSize="15sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_question_number"
                 tools:text="@tools:sample/lorem/random" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -192,44 +190,52 @@
 
     <RadioGroup
         android:id="@+id/radio_group"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card"
+        app:layout_constraintWidth_percent="0.8"
         tools:ignore="UselessParent">
 
         <RadioButton
-            android:id="@+id/rb_first"
-            style="@style/CustomVariantRadioButton"
+            android:id="@+id/rb_first_variant"
+            style="@style/GameScreenRadioButtonStyle"
             tools:text="First questionasdaasda" />
 
         <RadioButton
-            android:id="@+id/rb_second"
-            style="@style/CustomVariantRadioButton"
+            android:id="@+id/rb_second_variant"
+            style="@style/GameScreenRadioButtonStyle"
             tools:text="81" />
 
         <RadioButton
-            android:id="@+id/rb_third"
-            style="@style/CustomVariantRadioButton"
+            android:id="@+id/rb_third_variant"
+            style="@style/GameScreenRadioButtonStyle"
             tools:text="First questionasdaasda" />
 
         <RadioButton
-            android:id="@+id/rb_fourth"
-            style="@style/CustomVariantRadioButton"
+            android:id="@+id/rb_fourth_variant"
+            style="@style/GameScreenRadioButtonStyle"
             tools:text="First questionasdaasda" />
     </RadioGroup>
 
-    <ImageView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="?selectableItemBackground"
-        android:clickable="true"
+        android:backgroundTint="@color/main"
         android:contentDescription="@string/forward_button"
-        android:focusable="true"
-        android:src="@drawable/ic_arrow_forward"
+        android:drawableEnd="@drawable/ic_arrow_forward"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingVertical="8dp"
+        android:text="@string/text_next"
+        android:textSize="16sp"
+        app:iconPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_group" />
+        app:layout_constraintTop_toBottomOf="@id/radio_group"
+        app:layout_constraintVertical_bias="0.2"
+        app:shapeAppearanceOverlay="@style/CustomButtonShape" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
