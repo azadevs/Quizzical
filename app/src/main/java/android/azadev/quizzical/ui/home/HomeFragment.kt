@@ -14,17 +14,25 @@ import androidx.navigation.fragment.findNavController
  */
 
 class HomeFragment : Fragment(R.layout.fragment_home), OnClickListener {
+
     private var _binding: FragmentHomeBinding? = null
+
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         _binding = FragmentHomeBinding.bind(view)
 
         binding.ivProfile.setOnClickListener(this)
+
         binding.btnGeneral.setOnClickListener(this)
+
         binding.btnEntertainment.setOnClickListener(this)
+
         binding.btnScience.setOnClickListener(this)
+
         binding.btnLeaderBoard.setOnClickListener(this)
+
         binding.btnShareScore.setOnClickListener(this)
     }
 
