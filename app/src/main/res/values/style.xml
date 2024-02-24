@@ -34,7 +34,7 @@
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
-    <style name="CustomWinDialog" parent="android:Theme.Holo.Dialog">
+    <style name="CustomScoreDialog" parent="android:Theme.Holo.Dialog">
         <item name="android:windowMinWidthMajor">70%</item>
         <item name="android:windowMinWidthMinor">70%</item>
     </style>
