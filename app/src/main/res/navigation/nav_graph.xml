@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/scoreDialogFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="android.azadev.quizzical.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="android.azadev.quizzical.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="android.azadev.quizzical.ui.game.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_scoreDialogFragment"
+            app:destination="@id/scoreDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/scoreDialogFragment"
+        android:name="android.azadev.quizzical.ui.game.ScoreDialogFragment"
+        android:label="dialog_score_user"
+        tools:layout="@layout/dialog_score_user" />
 </navigation>
