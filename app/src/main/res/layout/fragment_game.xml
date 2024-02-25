@@ -173,8 +173,8 @@
 
     <antonkozyriatskyi.circularprogressindicator.CircularProgressIndicator
         android:id="@+id/progress_bar_timer"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:direction="counterclockwise"
         app:enableProgressAnimation="true"
         app:fillBackground="true"
@@ -196,7 +196,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/card"
-        app:layout_constraintWidth_percent="0.8"
+        app:layout_constraintWidth_percent="0.9"
         tools:ignore="UselessParent">
 
         <RadioButton
@@ -207,17 +207,17 @@
         <RadioButton
             android:id="@+id/rb_second_variant"
             style="@style/GameScreenRadioButtonStyle"
-            tools:text="81" />
+            tools:text="8asdasdasdas asdasdasda sdadasdaasdasdasdasdasdasdasd1" />
 
         <RadioButton
             android:id="@+id/rb_third_variant"
             style="@style/GameScreenRadioButtonStyle"
-            tools:text="First questionasdaasda" />
+            tools:text="First questiasdasdasdad adsadaonasdaasda" />
 
         <RadioButton
             android:id="@+id/rb_fourth_variant"
             style="@style/GameScreenRadioButtonStyle"
-            tools:text="First questionasdaasda" />
+            tools:text="Firstquestionasasdaasdaasdadsdassdfsd asdasdasdaasdasdasdasdasdasddaasda" />
     </RadioGroup>
 
     <com.google.android.material.button.MaterialButton
@@ -243,12 +243,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.6"
-        android:background="@color/design_default_color_background" />
+        android:background="@color/design_default_color_background"
+        android:visibility="invisible" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
