@@ -17,6 +17,6 @@ object Constants {
 
     val ENTERTAINMENT_CATEGORY_ID = (11..16).random()
 
-    const val TOTAL_SECONDS = 15
+    const val TOTAL_SECONDS = 20
 
 }
