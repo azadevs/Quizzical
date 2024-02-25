@@ -1,6 +1,6 @@
 package android.azadev.quizzical.repository
 
-import android.azadev.quizzical.model.DetailedAnswerResult
+import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 
 /**
  * Created by : Azamat Kalmurzayev

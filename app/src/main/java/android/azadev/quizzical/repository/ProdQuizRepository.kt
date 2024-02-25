@@ -1,7 +1,7 @@
 package android.azadev.quizzical.repository
 
 import android.azadev.quizzical.data.remote.api.QuizApi
-import android.azadev.quizzical.model.DetailedAnswerResult
+import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

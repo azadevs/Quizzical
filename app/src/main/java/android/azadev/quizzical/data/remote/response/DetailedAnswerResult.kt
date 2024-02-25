@@ -1,4 +1,4 @@
-package android.azadev.quizzical.model
+package android.azadev.quizzical.data.remote.response
 
 
 import com.google.gson.annotations.SerializedName
