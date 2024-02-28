@@ -1,7 +1,7 @@
 package android.azadev.quizzical.ui.game
 
 import android.azadev.quizzical.R
-import android.azadev.quizzical.databinding.DialogScoreUserBinding
+import android.azadev.quizzical.databinding.DialogScoreBinding
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.DialogFragment
@@ -11,13 +11,13 @@ import androidx.fragment.app.DialogFragment
  * Date : 2/25/2024
  */
 
-class ScoreDialogFragment : DialogFragment(R.layout.dialog_score_user) {
+class ScoreDialogFragment : DialogFragment(R.layout.dialog_score) {
 
-    private var _binding: DialogScoreUserBinding? = null
+    private var _binding: DialogScoreBinding? = null
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        _binding = DialogScoreUserBinding.bind(view)
+        _binding = DialogScoreBinding.bind(view)
 
     }
 

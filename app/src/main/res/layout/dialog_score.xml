@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@android:color/transparent"
     android:padding="10dp"
+    android:minWidth="320dp"
     tools:context=".ui.game.ScoreDialogFragment">
 
     <TextView
@@ -66,7 +67,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_play"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="4dp"
         android:backgroundTint="@android:color/transparent"
@@ -83,7 +84,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_exit"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="4dp"
         android:backgroundTint="@android:color/transparent"
