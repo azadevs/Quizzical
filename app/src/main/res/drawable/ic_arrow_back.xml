@@ -2,7 +2,6 @@
     android:width="28dp"
     android:height="28dp"
     android:autoMirrored="true"
-    android:tint="@color/white"
     android:viewportWidth="24"
     android:viewportHeight="24">
     <path
