@@ -1,0 +1,38 @@
+package android.azadev.quizzical.ui.leaderboard
+
+import android.azadev.quizzical.R
+import android.azadev.quizzical.databinding.FragmentLeaderboardBinding
+import android.os.Bundle
+import android.view.View
+import androidx.fragment.app.Fragment
+import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
+
+/**
+ * Created by : Azamat Kalmurzayev
+ * Date : 3/7/2024
+ */
+
+@AndroidEntryPoint
+class LeaderboardFragment : Fragment(R.layout.fragment_leaderboard) {
+    private var _binding: FragmentLeaderboardBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        _binding = FragmentLeaderboardBinding.bind(view)
+
+    }
+
+    private fun configureViewpagerWithTab() {
+        binding.apply {
+            TabLayoutMediator(tab, viewpager) { tab, position ->
+
+            }.attach()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
