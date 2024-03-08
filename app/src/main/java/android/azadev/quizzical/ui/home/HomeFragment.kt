@@ -25,35 +25,39 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnClickListener {
 
         binding.ivProfile.setOnClickListener(this)
 
-        binding.btnGeneral.setOnClickListener(this)
+        binding.cardGeography.setOnClickListener(this)
 
-        binding.btnEntertainment.setOnClickListener(this)
+        binding.cardHistory.setOnClickListener(this)
 
-        binding.btnScience.setOnClickListener(this)
+        binding.cardMath.setOnClickListener(this)
 
-        binding.btnLeaderBoard.setOnClickListener(this)
+        binding.cardSport.setOnClickListener(this)
+    }
 
-        binding.btnShareScore.setOnClickListener(this)
+    private fun navigateToGameScreen() {
+        findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_entertainment -> {
-                findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
+            R.id.card_geography -> {
+                navigateToGameScreen()
             }
 
-            R.id.btn_general -> {
-                findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
+            R.id.card_history -> {
+                navigateToGameScreen()
             }
 
-            R.id.btn_science -> {
-                findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
+            R.id.card_history -> {
+                navigateToGameScreen()
+            }
+
+            R.id.card_sport -> {
+                navigateToGameScreen()
             }
 
             R.id.iv_profile -> {
-                findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
             }
-
         }
     }
 }

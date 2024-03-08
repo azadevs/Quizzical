@@ -7,10 +7,12 @@ import android.azadev.quizzical.databinding.FragmentGameBinding
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.UIExtensions.inVisible
 import android.azadev.quizzical.utils.UIExtensions.visible
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.RadioButton
-import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -40,33 +42,50 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private var incorrectAnswerCount: Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         _binding = FragmentGameBinding.bind(view)
+
+        var isChecked = false
 
         binding.progressBarTimer.maxProgress = Constants.TOTAL_SECONDS.toDouble()
 
         viewModel.getQuizzesByCategoryId(Constants.SCIENCE_CATEGORY_ID)
 
-        binding.backBtn.setOnClickListener {
+        binding.ivCancel.setOnClickListener {
             findNavController().popBackStack()
         }
 
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            if (checkedId != -1 && !isChecked) {
+                val checkedRadioButtonId =
+                    requireView().findViewById<RadioButton>(checkedId).text.toString()
+                viewModel.submitAnswer(checkedRadioButtonId)
+                radioButtonDisabled()
+                isChecked = true
+            }
+        }
+
         binding.btnNext.setOnClickListener {
-            viewModel.submitAnswer(getSelectedAnswer())
+            binding.radioGroup.clearCheck()
+            setDefaultBackgroundToRadioButton()
             viewModel.nextQuestionAndRestartTimer()
+            isChecked = false
         }
 
         viewModel.correctProgressFlow.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { value ->
                 updateCorrectProgressbar(value)
                 correctAnswerCount = value
+                correctAnswerBackground()
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         viewModel.incorrectProgressFlow.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { value ->
                 updateIncorrectProgressbar(value)
                 incorrectAnswerCount = value
+                inCorrectAnswerBackground()
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         viewModel.uiState.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach { result ->
@@ -82,21 +101,29 @@ class GameFragment : Fragment(R.layout.fragment_game) {
             .onEach { currentTime ->
                 binding.progressBarTimer.setCurrentProgress(currentTime.toDouble())
                 if (currentTime == 0) {
-                    viewModel.submitAnswer(getSelectedAnswer())
+                    setDefaultBackgroundToRadioButton()
+                    binding.radioGroup.clearCheck()
+                    if (!isChecked) {
+                        viewModel.submitAnswer("")
+                    }
+                    isChecked = false
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun getSelectedAnswer(): String {
-        val checkedRadioButtonId = binding.radioGroup.checkedRadioButtonId
-        return if (checkedRadioButtonId != -1) {
-            val checkedAnswer =
-                view?.findViewById<RadioButton>(checkedRadioButtonId)?.text.toString()
-            binding.radioGroup.clearCheck()
-            checkedAnswer
-        } else {
-            binding.radioGroup.clearCheck()
-            " "
+    private fun inCorrectAnswerBackground() {
+        if (getCheckedRadioButtonId() != -1) {
+            val selectedRadioButton =
+                requireView().findViewById<RadioButton>(getCheckedRadioButtonId())
+            selectedRadioButton.setBackgroundResource(R.drawable.incorrect_radio_button)
+        }
+    }
+
+    private fun correctAnswerBackground() {
+        if (getCheckedRadioButtonId() != -1) {
+            val selectedRadioButton =
+                requireView().findViewById<RadioButton>(getCheckedRadioButtonId())
+            selectedRadioButton.setBackgroundResource(R.drawable.correct_radio_button)
         }
     }
 
@@ -124,9 +151,9 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private fun resetProgressTimer() {
         binding.progressBarTimer.setCurrentProgress(0.0)
-        findNavController().navigate(R.id.action_gameFragment_to_scoreDialogFragment)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     private fun configureUI(quizzes: List<DetailedAnswerResult>) {
         hideProgressbar()
@@ -135,36 +162,72 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 binding.apply {
                     val data = quizzes[count]
                     tvQuestion.text = data.question
-                    tvQuestionNumber.text = (count + 1).toString()
-                    val shuffledVariants =
-                        data.incorrectAnswers.shuffled() + listOf(data.correctAnswer)
-                    setVariants(shuffledVariants)
-
-                    Toast.makeText(requireContext(), data.correctAnswer, Toast.LENGTH_SHORT)
-                        .show()
+                    tvQuestionCount.text = "${(count + 1)}/${quizzes.size}"
+                    binding.linearProgressbar.setProgress((count + 1) * 10, true)
+                    configureRadioButtons(data)
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun setVariants(variants: List<String>) {
+    private fun configureRadioButtons(data: DetailedAnswerResult) {
+        val shuffledVariants = data.incorrectAnswers.shuffled() + listOf(data.correctAnswer)
         binding.apply {
-            if (variants.size == 2) {
+            if (shuffledVariants.size == 2) {
                 rbThirdVariant.inVisible()
                 rbFourthVariant.inVisible()
-                rbFirstVariant.text = variants[0]
-                rbSecondVariant.text = variants[1]
+                rbFirstVariant.text = shuffledVariants[0]
+                rbSecondVariant.text = shuffledVariants[1]
             } else {
                 rbThirdVariant.visible()
                 rbFourthVariant.visible()
-                rbFirstVariant.text = variants[0]
-                rbSecondVariant.text = variants[1]
-                rbThirdVariant.text = variants[2]
-                rbFourthVariant.text = variants[3]
+                rbFirstVariant.text = shuffledVariants[0]
+                rbSecondVariant.text = shuffledVariants[1]
+                rbThirdVariant.text = shuffledVariants[2]
+                rbFourthVariant.text = shuffledVariants[3]
             }
         }
     }
 
-//    @SuppressLint("SetTextI18n")
+    private fun getCheckedRadioButtonId() =
+        binding.radioGroup.checkedRadioButtonId
+
+
+    private fun radioButtonEnabled() {
+        binding.radioGroup.children.forEach { radioButton ->
+            radioButton.isEnabled = true
+        }
+    }
+
+    private fun radioButtonDisabled() {
+        binding.radioGroup.children.forEach { radioButton ->
+            radioButton.isEnabled = false
+        }
+    }
+
+    private fun setDefaultBackgroundToRadioButton() {
+        radioButtonEnabled()
+        binding.radioGroup.children.forEach { radioButton ->
+            radioButton.setBackgroundResource(R.drawable.radio_button_background)
+        }
+    }
+
+    private fun showProgressbar() {
+        binding.frame.visible()
+        binding.progressbar.visible()
+    }
+
+    private fun hideProgressbar() {
+        binding.frame.inVisible()
+        binding.progressbar.inVisible()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
+    //    @SuppressLint("SetTextI18n")
 //    private fun showScoreDialog() {
 //        val dialog = Dialog(requireContext())
 //        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -192,19 +255,4 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 //        }
 //        dialog.show()
 //    }
-
-    private fun showProgressbar() {
-        binding.frame.visible()
-        binding.progressBar.visible()
-    }
-
-    private fun hideProgressbar() {
-        binding.frame.inVisible()
-        binding.progressBar.inVisible()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
