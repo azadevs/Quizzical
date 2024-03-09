@@ -31,6 +31,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="end"
+                android:background="@drawable/ripple_effect_circle"
+                android:clickable="true"
+                android:focusable="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_person_gray"
                 app:shapeAppearance="@style/CircleShapeableImageView" />
