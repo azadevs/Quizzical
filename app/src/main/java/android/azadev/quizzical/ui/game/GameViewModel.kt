@@ -77,7 +77,7 @@ class GameViewModel @Inject constructor(
     }
 
     private fun isCorrectAnswer(selectedAnswer: String) =
-        quizzes[currentQuestionPosition.value].correctAnswer.equals(selectedAnswer)
+        quizzes[currentQuestionPosition.value].correctAnswer == selectedAnswer
 
     private fun startTimerIfSuccess() {
         timerJob = viewModelScope.launch {
