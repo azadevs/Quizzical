@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_user_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        app:shapeAppearance="@style/CircleShapeableImageView" />
+
+    <ImageView
+        android:id="@+id/iv_subtract"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect_circle"
+        android:clickable="true"
+        android:contentDescription="@string/description_subtract"
+        android:focusable="true"
+        android:src="@drawable/ic_subtract"
+        app:layout_constraintBottom_toBottomOf="@id/iv_user_image"
+        app:layout_constraintEnd_toEndOf="@id/iv_user_image"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="@id/iv_user_image"
+        app:layout_constraintTop_toTopOf="@id/iv_user_image"
+        app:layout_constraintVertical_bias="1" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="@string/text_user_full_name"
+        android:textSize="16sp"
+        app:fontFamily="@font/poppins_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/textfield_full_name"
+        app:layout_constraintTop_toBottomOf="@id/iv_user_image"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textfield_full_name"
+        style="@style/CustomTextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        app:layout_constraintWidth_percent="0.85">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_name"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_person_gray"
+            android:hint="@string/text_full_name"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_nick_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="@string/text_user_nickname"
+        android:textSize="16sp"
+        app:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/textfield_full_name"
+        app:layout_constraintTop_toBottomOf="@id/textfield_full_name" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textfield_nick_name"
+        style="@style/CustomTextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_nick_name"
+        app:layout_constraintWidth_percent="0.85">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_nick_name"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_person_gray"
+            android:hint="@string/text_nick_name"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="@string/text_user_email"
+        android:textSize="16sp"
+        app:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/textfield_nick_name"
+        app:layout_constraintTop_toBottomOf="@id/textfield_nick_name"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textfield_input_email"
+        style="@style/CustomTextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_email"
+        app:layout_constraintWidth_percent="0.85">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_email"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_email"
+            android:hint="@string/text_email"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="@string/text_phone_number_optional"
+        android:textSize="16sp"
+        app:fontFamily="@font/poppins_medium"
+        app:layout_constraintStart_toStartOf="@id/textfield_input_email"
+        app:layout_constraintTop_toBottomOf="@id/textfield_input_email" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textfield_input_number"
+        style="@style/CustomTextInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_number"
+        app:layout_constraintWidth_percent="0.85">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_number"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableStart="@drawable/ic_email"
+            android:hint="@string/text_phone_number"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:padding="10dp"
+        android:text="@string/text_save"
+        android:textSize="16sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/textfield_input_number"
+        app:layout_constraintStart_toStartOf="@id/textfield_input_number"
+        app:layout_constraintTop_toBottomOf="@id/textfield_input_number"
+        app:layout_constraintVertical_bias="0.1"
+        app:layout_constraintWidth_percent="0.85" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
