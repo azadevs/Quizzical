@@ -63,4 +63,9 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.48")
 
 
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+
 }
