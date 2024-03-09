@@ -2,11 +2,13 @@ package android.azadev.quizzical.ui.home
 
 import android.azadev.quizzical.R
 import android.azadev.quizzical.databinding.FragmentHomeBinding
+import android.azadev.quizzical.utils.isNetworkAvailable
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 
 /**
  * Created by : Azamat Kalmurzayev
@@ -35,7 +37,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnClickListener {
     }
 
     private fun navigateToGameScreen() {
-        findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
+        if (isNetworkAvailable(requireContext())) {
+            findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
+        } else {
+            Snackbar.make(
+                binding.root,
+                getString(R.string.error_network_connection),
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onClick(v: View?) {
@@ -56,7 +66,12 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnClickListener {
                 navigateToGameScreen()
             }
 
+            R.id.card_math -> {
+                navigateToGameScreen()
+            }
+
             R.id.iv_profile -> {
+                findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
             }
         }
     }
