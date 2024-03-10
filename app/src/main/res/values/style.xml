@@ -32,6 +32,11 @@
         <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
 
+    <style name="ToolbarProfileTitleStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
     <style name="ToolbarSubTitleStyle">
         <item name="android:textSize">15sp</item>
         <item name="android:fontFamily">@font/poppins_medium</item>
@@ -54,6 +59,27 @@
     <style name="TabTextAppearance">
         <item name="android:textSize">15sp</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="CustomTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">8dp</item>
+    </style>
+
+    <style name="CustomEditText">
+        <item name="android:importantForAutofill" tools:targetApi="o">no</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Theme.Material.Light.Dialog.NoMinWidth" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:windowMinWidthMinor">0dp</item>
+        <item name="android:windowMinWidthMajor">0dp</item>
     </style>
 
 </resources>

@@ -19,4 +19,32 @@
     <string name="text_question_count_20">20 questions</string>
     <string name="_0">00</string>
     <string name="text_next">Next</string>
+    <string name="error_network_connection">Oops! Looks like you\'re offline</string>
+    <string name="hint_first_name">Enter your first name</string>
+    <string name="hint_last_name">Enter your last name</string>
+    <string name="hint_email">Enter your email</string>
+    <string name="text_save">Save</string>
+    <string name="description_subtract">Subtract button for profile image changed</string>
+    <string name="hint_username">Enter your username</string>
+    <string name="text_personal_information">Personal Information</string>
+    <string name="hint_date_of_birth">Select your date of birth</string>
+    <string name="text_first_name">First Name</string>
+    <string name="text_last_name">Last Name</string>
+    <string name="text_email">Email</string>
+    <string name="text_date_of_birth">Date of birth</string>
+
+
+    // Months
+    <string name="month_january">JAN</string>
+    <string name="month_february">FEB</string>
+    <string name="month_march">MAR</string>
+    <string name="month_april">APR</string>
+    <string name="month_may">MAY</string>
+    <string name="month_june">JUN</string>
+    <string name="month_july">JUL</string>
+    <string name="month_august">AUG</string>
+    <string name="month_september">SEP</string>
+    <string name="month_october">OCT</string>
+    <string name="month_november">NOV</string>
+    <string name="month_december">DEC</string>
 </resources>
