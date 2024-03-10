@@ -1,5 +1,7 @@
 package android.azadev.quizzical.repository
 
+import android.azadev.quizzical.data.local.entity.ScoreEntity
+import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 
 /**
@@ -10,5 +12,13 @@ import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 interface QuizRepository {
 
     suspend fun getQuizzesByCategory(categoryId: Int): Result<List<DetailedAnswerResult>>
+
+    suspend fun insertUserData(userEntity: UserEntity)
+
+    suspend fun insertScoreData(scoreEntity: ScoreEntity)
+
+    suspend fun updateScoreData(scoreEntity: ScoreEntity)
+
+    suspend fun updateUserData(userEntity: UserEntity)
 
 }
