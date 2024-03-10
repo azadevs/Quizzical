@@ -36,6 +36,7 @@
                 android:focusable="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_person_gray"
+                app:contentPadding="4dp"
                 app:shapeAppearance="@style/CircleShapeableImageView" />
         </com.google.android.material.appbar.MaterialToolbar>
 
