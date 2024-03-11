@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_homeFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -72,5 +75,10 @@
             android:name="Game"
             app:argType="android.azadev.quizzical.ui.game.GameScoreData" />
     </dialog>
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="android.azadev.quizzical.ui.leaderboard.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 
 </navigation>

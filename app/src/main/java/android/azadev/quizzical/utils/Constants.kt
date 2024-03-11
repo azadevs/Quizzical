@@ -31,7 +31,7 @@ object Constants {
     const val PREFS_USER_ID = "userId"
     const val PREFS_IS_HAVE = "isHave"
 
-    fun getMonth(month: Int, context: Context): String {
+    private fun getMonth(month: Int, context: Context): String {
         return when (month) {
             1 -> getString(context, R.string.month_january)
             2 -> getString(context, R.string.month_february)
@@ -50,6 +50,8 @@ object Constants {
             }
         }
     }
+
+    fun getAllTabsNames() = listOf("All time", "This week", "Month")
 
     fun makeDateToString(day: Int, month: Int, year: Int, context: Context): String {
         return "${getMonth(month, context)} $day $year"
