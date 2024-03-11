@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tool:context=".ui.game.GameOverFragmentDialog"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/text_quiz_result"
+        android:textAlignment="center"
+        android:textColor="?colorSecondary"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/iv_cup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/text_cup_image"
+        android:src="@drawable/score_well"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_result"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_total_questions_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/tex_total"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_total_questions_count"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_cup"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_total_questions_count"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="?colorSecondary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_total_questions_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_total_questions_text"
+        app:layout_constraintTop_toBottomOf="@id/iv_cup"
+        app:layout_constraintTop_toTopOf="@id/tv_total_questions_text"
+        tool:text="20" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_correct_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/text_correct"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_total_questions_text"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@id/tv_total_questions_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_total_questions_text" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_correct_answers_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="?colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/tv_correct_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_total_questions_count"
+        tool:text="10" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_incorrect_answers_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/text_incorrect"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/tv_correct_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_correct_text" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_incorrect_answers_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="?colorError"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/tv_incorrect_answers_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_correct_text"
+        tool:text="20" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_category_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/text_category"
+        android:textSize="20sp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_total_questions_text"
+        app:layout_constraintEnd_toStartOf="@id/tv_category_name"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/tv_total_questions_count"
+        app:layout_constraintTop_toTopOf="@id/tv_total_questions_text" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_category_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="?colorSecondary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/tv_total_questions_count"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_category_text"
+        app:layout_constraintTop_toTopOf="@id/tv_total_questions_count"
+        tool:text="Math" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_play_again"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:text="@string/text_play_again"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_back"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_incorrect_answers_text"
+        app:layout_constraintVertical_bias="0.1"  />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:text="@string/text_back_to_home"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_play_again"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_play_again"
+        app:layout_constraintTop_toTopOf="@id/btn_play_again" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
