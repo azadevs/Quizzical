@@ -22,6 +22,9 @@ interface ScoreDao {
     suspend fun updateScoreData(scoreEntity: ScoreEntity)
 
     @Query("SELECT * FROM score_table WHERE id=:scoreId")
-    suspend fun getScoreDataById(scoreId:Long):ScoreEntity
+    suspend fun getScoreDataById(scoreId: Long): ScoreEntity
+
+    @Query("SELECT EXISTS(SELECT * FROM score_table)")
+    fun hasScoreData(): Boolean
 
 }

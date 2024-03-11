@@ -15,5 +15,6 @@ data class ScoreEntity(
     val id: Int = 0,
     val score: Int = 0,
     @ColumnInfo("user_id")
-    val userId: Int
+    val userId: Int,
+    val date: Long
 )

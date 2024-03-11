@@ -51,15 +51,22 @@ class LocalSource @Inject constructor(
         }
     }
 
-    fun getUserDataById() = flow<UserEntity> {
+    fun getUserDataById() = flow {
         emit(
             userDao.getUserDataById(sharedPreferences.getLong(PREFS_USER_ID, 0))
         )
     }
 
-    fun getScoreDataById() = flow<ScoreEntity> {
+    fun getScoreDataById() = flow {
         emit(
             scoreDao.getScoreDataById(sharedPreferences.getLong(PREFS_SCORE_ID, 0))
         )
     }
+
+    fun getUserAndScore() = userDao.getUserAndScores()
+
+    fun hasUserData() = userDao.hasUserData()
+
+    fun hasScoreData() = scoreDao.hasScoreData()
+
 }

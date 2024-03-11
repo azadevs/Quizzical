@@ -2,6 +2,7 @@ package android.azadev.quizzical.repository
 
 import android.azadev.quizzical.data.local.LocalSource
 import android.azadev.quizzical.data.local.entity.ScoreEntity
+import android.azadev.quizzical.data.local.entity.UserAndScore
 import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.data.remote.api.QuizApi
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
@@ -47,4 +48,9 @@ class ProdQuizRepository @Inject constructor(
 
     override fun getScoreDataById(): Flow<ScoreEntity> = localSource.getScoreDataById()
 
+    override fun getUserAndScores(): Flow<List<UserAndScore>> = localSource.getUserAndScore()
+
+    override fun hasUserData(): Boolean = localSource.hasUserData()
+
+    override fun hasScoreData(): Boolean = localSource.hasScoreData()
 }
