@@ -47,4 +47,13 @@
     <string name="month_october">OCT</string>
     <string name="month_november">NOV</string>
     <string name="month_december">DEC</string>
+    <string name="text_create">Create</string>
+    <string name="text_cup_image">Cup image</string>
+    <string name="text_quiz_result">Quiz Result</string>
+    <string name="text_category">Category :</string>
+    <string name="text_incorrect">Incorrect :</string>
+    <string name="text_correct">Correct :</string>
+    <string name="tex_total">Total :</string>
+    <string name="text_play_again">Play again</string>
+    <string name="text_back_to_home">Back to home</string>
 </resources>

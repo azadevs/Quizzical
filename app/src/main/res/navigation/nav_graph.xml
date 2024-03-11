@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/scoreDialogFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -11,20 +11,16 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="android.azadev.quizzical.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile">
         <action
-            android:id="@+id/action_profileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            android:id="@+id/action_homeFragment_to_createProfileFragment"
+            app:destination="@id/createProfileFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -34,13 +30,47 @@
         <action
             android:id="@+id/action_gameFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="category"
+            app:argType="string" />
         <action
-            android:id="@+id/action_gameFragment_to_scoreDialogFragment"
-            app:destination="@id/scoreDialogFragment" />
+            android:id="@+id/action_gameFragment_to_gameOverFragmentDialog"
+            app:destination="@id/gameOverFragmentDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/createProfileFragment"
+        android:name="android.azadev.quizzical.ui.profile.create.CreateProfileFragment"
+        android:label="fragment_create_profile"
+        tools:layout="@layout/fragment_create_profile" >
+        <action
+            android:id="@+id/action_createProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/createProfileFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="android.azadev.quizzical.ui.profile.edit.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <dialog
-        android:id="@+id/scoreDialogFragment"
-        android:name="android.azadev.quizzical.ui.game.ScoreDialogFragment"
-        android:label="dialog_score_user"
-        tools:layout="@layout/dialog_score_user" />
+        android:id="@+id/gameOverFragmentDialog"
+        android:name="android.azadev.quizzical.ui.game.GameOverFragmentDialog"
+        android:label="fragment_dialog_game_over"
+        tools:layout="@layout/fragment_dialog_game_over" >
+        <action
+            android:id="@+id/action_gameOverFragmentDialog_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="Game"
+            app:argType="android.azadev.quizzical.ui.game.GameScoreData" />
+    </dialog>
+
 </navigation>
