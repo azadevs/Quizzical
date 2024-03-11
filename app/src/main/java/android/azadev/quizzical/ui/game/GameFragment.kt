@@ -18,6 +18,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -42,6 +43,8 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private var incorrectAnswerCount: Int = 0
 
+    private val navArgs: GameFragmentArgs by navArgs()
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -50,8 +53,6 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         var isChecked = false
 
         binding.progressBarTimer.maxProgress = Constants.TOTAL_SECONDS.toDouble()
-
-        viewModel.getQuizzesByCategoryId(Constants.SCIENCE_CATEGORY_ID)
 
         binding.ivCancel.setOnClickListener {
             findNavController().popBackStack()
@@ -68,10 +69,15 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         }
 
         binding.btnNext.setOnClickListener {
-            binding.radioGroup.clearCheck()
-            setDefaultBackgroundToRadioButton()
-            viewModel.nextQuestionAndRestartTimer()
-            isChecked = false
+            if (!isChecked) {
+                Snackbar.make(binding.root, "Please choose one option", Snackbar.LENGTH_SHORT)
+                    .show()
+            } else {
+                binding.radioGroup.clearCheck()
+                setDefaultBackgroundToRadioButton()
+                viewModel.nextQuestionAndRestartTimer()
+                isChecked = false
+            }
         }
 
         viewModel.correctProgressFlow.flowWithLifecycle(viewLifecycleOwner.lifecycle)
@@ -93,7 +99,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 is GameState.Error -> showErrorSnackbar(result.message)
                 GameState.Loading -> showLoadingProgressbar()
                 is GameState.Success -> configureUI(result.data)
-                GameState.GameOver -> resetProgressTimer()
+                GameState.GameOver -> gameOver()
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
@@ -149,8 +155,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         showProgressbar()
     }
 
-    private fun resetProgressTimer() {
+    private fun gameOver() {
         binding.progressBarTimer.setCurrentProgress(0.0)
+        val gameScoreData = GameScoreData(
+            correctAnswersCount = correctAnswerCount,
+            incorrectAnswersCount = incorrectAnswerCount,
+            category = navArgs.category
+        )
+        val action =
+            GameFragmentDirections.actionGameFragmentToGameOverFragmentDialog(gameScoreData)
+        findNavController().navigate(action)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -170,26 +184,26 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     }
 
     private fun configureRadioButtons(data: DetailedAnswerResult) {
-        val shuffledVariants = data.incorrectAnswers.shuffled() + listOf(data.correctAnswer)
+        val variants = data.incorrectAnswers + data.correctAnswer
+        val shuffled = variants.shuffled()
         binding.apply {
-            if (shuffledVariants.size == 2) {
+            if (shuffled.size == 2) {
                 rbThirdVariant.inVisible()
                 rbFourthVariant.inVisible()
-                rbFirstVariant.text = shuffledVariants[0]
-                rbSecondVariant.text = shuffledVariants[1]
+                rbFirstVariant.text = shuffled[0]
+                rbSecondVariant.text = shuffled[1]
             } else {
                 rbThirdVariant.visible()
                 rbFourthVariant.visible()
-                rbFirstVariant.text = shuffledVariants[0]
-                rbSecondVariant.text = shuffledVariants[1]
-                rbThirdVariant.text = shuffledVariants[2]
-                rbFourthVariant.text = shuffledVariants[3]
+                rbFirstVariant.text = shuffled[0]
+                rbSecondVariant.text = shuffled[1]
+                rbThirdVariant.text = shuffled[2]
+                rbFourthVariant.text = shuffled[3]
             }
         }
     }
 
-    private fun getCheckedRadioButtonId() =
-        binding.radioGroup.checkedRadioButtonId
+    private fun getCheckedRadioButtonId() = binding.radioGroup.checkedRadioButtonId
 
 
     private fun radioButtonEnabled() {
@@ -225,34 +239,4 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         super.onDestroyView()
         _binding = null
     }
-
-
-    //    @SuppressLint("SetTextI18n")
-//    private fun showScoreDialog() {
-//        val dialog = Dialog(requireContext())
-//        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//        val dialogUserBinding = DialogScoreUserBinding.inflate(layoutInflater)
-//        dialog.setContentView(dialogUserBinding.root)
-//        dialog.setCancelable(false)
-//        dialog.window?.attributes?.windowAnimations = R.style.animation
-//
-//        dialogUserBinding.apply {
-//            btnPlay.setOnClickListener {
-//                dialog.dismiss()
-//                findNavController().navigate(
-//                    R.id.gameFragment,
-//                    arguments,
-//                    NavOptions.Builder().setPopUpTo(R.id.gameFragment, true).build()
-//                )
-//            }
-//            btnExit.setOnClickListener {
-//                dialog.dismiss()
-//                findNavController().popBackStack()
-//            }
-//            tvScore.text = "${getString(R.string.your_score)} ${correctAnswerCount}pts%"
-//            tvCorrect.text = "${getString(R.string.text_correct)} ${correctAnswerCount * 5}%"
-//            tvIncorrect.text = "${getString(R.string.text_correct)} ${incorrectAnswerCount * 5}%"
-//        }
-//        dialog.show()
-//    }
 }

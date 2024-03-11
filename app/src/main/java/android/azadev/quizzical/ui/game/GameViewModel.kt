@@ -1,12 +1,17 @@
 package android.azadev.quizzical.ui.game
 
+import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 import android.azadev.quizzical.repository.QuizRepository
+import android.azadev.quizzical.utils.Categories
+import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.Constants.QUESTIONS_AMOUNT
 import android.azadev.quizzical.utils.Constants.TOTAL_SECONDS
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -30,14 +35,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GameViewModel @Inject constructor(
-    private val repository: QuizRepository
+    private val repository: QuizRepository,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private var timerJob: Job? = null
 
     private var _timerSharedFlow = MutableSharedFlow<Int>()
     val timerSharedFlow = _timerSharedFlow.asSharedFlow()
-
 
     private var _gameState =
         MutableStateFlow<GameState<List<DetailedAnswerResult>>>(GameState.Loading)
@@ -54,7 +59,18 @@ class GameViewModel @Inject constructor(
 
     private val quizzes = mutableListOf<DetailedAnswerResult>()
 
-    fun getQuizzesByCategoryId(categoryId: Int) {
+    init {
+        val categoryId = when (savedStateHandle.get<String>("category")) {
+            Categories.Geography.name -> Constants.GEOGRAPHY_ID
+            Categories.Math.name -> Constants.MATH_ID
+            Categories.Sport.name -> Constants.SPORT_ID
+            Categories.History.name -> Constants.HISTORY_ID
+            else -> Constants.GENERAL_KNOWLEDGE
+        }
+        getQuizzesByCategoryId(categoryId)
+    }
+
+    private fun getQuizzesByCategoryId(categoryId: Int) {
         viewModelScope.launch {
             repository.getQuizzesByCategory(categoryId)
                 .onSuccess {
@@ -114,11 +130,16 @@ class GameViewModel @Inject constructor(
             .onEach { delay(1000) }
             .onStart {
                 emit(TOTAL_SECONDS)
-            }
-            .conflate()
+            }.conflate()
 
     private fun stopTimer() {
         timerJob?.cancel()
         timerJob = null
+    }
+
+    private fun insertScoreData(scoreEntity: ScoreEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertScoreData(scoreEntity)
+        }
     }
 }
