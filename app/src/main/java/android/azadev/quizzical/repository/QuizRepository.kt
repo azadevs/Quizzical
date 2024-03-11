@@ -3,6 +3,7 @@ package android.azadev.quizzical.repository
 import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by : Azamat Kalmurzayev
@@ -21,4 +22,7 @@ interface QuizRepository {
 
     suspend fun updateUserData(userEntity: UserEntity)
 
+    fun getUserDataById(): Flow<UserEntity>
+
+    fun getScoreDataById(): Flow<ScoreEntity>
 }

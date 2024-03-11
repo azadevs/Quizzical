@@ -4,6 +4,7 @@ import android.azadev.quizzical.data.local.entity.UserEntity
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import androidx.room.Update
 
 /**
@@ -19,5 +20,8 @@ interface UserDao {
 
     @Update
     suspend fun updateUserData(userEntity: UserEntity)
+
+    @Query("SELECT * FROM user_table WHERE id=:userId")
+    suspend fun getUserDataById(userId: Long): UserEntity
 
 }

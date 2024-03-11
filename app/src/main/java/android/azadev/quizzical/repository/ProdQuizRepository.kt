@@ -6,6 +6,7 @@ import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.data.remote.api.QuizApi
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -27,26 +28,23 @@ class ProdQuizRepository @Inject constructor(
         }
 
     override suspend fun insertUserData(userEntity: UserEntity) {
-        withContext(Dispatchers.IO) {
-            localSource.insertUserData(userEntity)
-        }
+        localSource.insertUserData(userEntity)
     }
 
     override suspend fun insertScoreData(scoreEntity: ScoreEntity) {
-        withContext(Dispatchers.IO) {
-            localSource.insertUserData(scoreEntity)
-        }
+        localSource.insertUserData(scoreEntity)
     }
 
     override suspend fun updateScoreData(scoreEntity: ScoreEntity) {
-        withContext(Dispatchers.IO) {
-            localSource.updateScoreData(scoreEntity)
-        }
+        localSource.updateScoreData(scoreEntity)
     }
 
     override suspend fun updateUserData(userEntity: UserEntity) {
-        withContext(Dispatchers.IO) {
-            localSource.updateUserData(userEntity)
-        }
+        localSource.updateUserData(userEntity)
     }
+
+    override fun getUserDataById(): Flow<UserEntity> = localSource.getUserDataById()
+
+    override fun getScoreDataById(): Flow<ScoreEntity> = localSource.getScoreDataById()
+
 }

@@ -4,6 +4,7 @@ import android.azadev.quizzical.data.local.entity.ScoreEntity
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import androidx.room.Update
 
 /**
@@ -19,5 +20,8 @@ interface ScoreDao {
 
     @Update
     suspend fun updateScoreData(scoreEntity: ScoreEntity)
+
+    @Query("SELECT * FROM score_table WHERE id=:scoreId")
+    suspend fun getScoreDataById(scoreId:Long):ScoreEntity
 
 }

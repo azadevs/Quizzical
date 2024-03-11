@@ -4,7 +4,12 @@ import android.azadev.quizzical.data.local.dao.ScoreDao
 import android.azadev.quizzical.data.local.dao.UserDao
 import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.data.local.entity.UserEntity
+import android.azadev.quizzical.utils.Constants.PREFS_SCORE_ID
+import android.azadev.quizzical.utils.Constants.PREFS_USER_ID
 import android.content.SharedPreferences
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -21,20 +26,40 @@ class LocalSource @Inject constructor(
 ) {
 
     suspend fun insertUserData(userEntity: UserEntity) {
-        val userId = userDao.insertUserData(userEntity)
-        sharedPreferences.edit().putLong("userId", userId).apply()
+        withContext(Dispatchers.IO) {
+            val userId = userDao.insertUserData(userEntity)
+            sharedPreferences.edit().putLong(PREFS_USER_ID, userId).apply()
+        }
     }
 
     suspend fun insertUserData(scoreEntity: ScoreEntity) {
-        val scoreId = scoreDao.insertScoreData(scoreEntity)
-        sharedPreferences.edit().putLong("scoreId", scoreId).apply()
+        withContext(Dispatchers.IO) {
+            val scoreId = scoreDao.insertScoreData(scoreEntity)
+            sharedPreferences.edit().putLong(PREFS_SCORE_ID, scoreId).apply()
+        }
     }
 
     suspend fun updateUserData(userEntity: UserEntity) {
-        userDao.updateUserData(userEntity)
+        withContext(Dispatchers.IO) {
+            userDao.updateUserData(userEntity)
+        }
     }
 
     suspend fun updateScoreData(scoreEntity: ScoreEntity) {
-        scoreDao.updateScoreData(scoreEntity)
+        withContext(Dispatchers.IO) {
+            scoreDao.updateScoreData(scoreEntity)
+        }
+    }
+
+    fun getUserDataById() = flow<UserEntity> {
+        emit(
+            userDao.getUserDataById(sharedPreferences.getLong(PREFS_USER_ID, 0))
+        )
+    }
+
+    fun getScoreDataById() = flow<ScoreEntity> {
+        emit(
+            scoreDao.getScoreDataById(sharedPreferences.getLong(PREFS_SCORE_ID, 0))
+        )
     }
 }
