@@ -2,11 +2,13 @@ package android.azadev.quizzical.ui.game
 
 import android.annotation.SuppressLint
 import android.azadev.quizzical.R
+import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 import android.azadev.quizzical.databinding.FragmentGameBinding
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.UIExtensions.inVisible
 import android.azadev.quizzical.utils.UIExtensions.visible
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -23,6 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 
 /**
@@ -44,6 +47,9 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private var incorrectAnswerCount: Int = 0
 
     private val navArgs: GameFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var preferences: SharedPreferences
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -156,6 +162,13 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     }
 
     private fun gameOver() {
+        viewModel.insertScoreData(
+            ScoreEntity(
+                score = correctAnswerCount,
+                userId = preferences.getLong(Constants.PREFS_USER_ID, 0).toInt(),
+                date = System.currentTimeMillis()
+            )
+        )
         binding.progressBarTimer.setCurrentProgress(0.0)
         val gameScoreData = GameScoreData(
             correctAnswersCount = correctAnswerCount,

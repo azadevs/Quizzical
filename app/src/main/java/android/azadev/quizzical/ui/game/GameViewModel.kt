@@ -7,6 +7,7 @@ import android.azadev.quizzical.utils.Categories
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.Constants.QUESTIONS_AMOUNT
 import android.azadev.quizzical.utils.Constants.TOTAL_SECONDS
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.conflate
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
@@ -137,9 +139,25 @@ class GameViewModel @Inject constructor(
         timerJob = null
     }
 
-    private fun insertScoreData(scoreEntity: ScoreEntity) {
+    fun insertScoreData(scoreEntity: ScoreEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.insertScoreData(scoreEntity)
+            try {
+                if (repository.hasScoreData()) {
+                    val existingScore = repository.getScoreDataById().firstOrNull()
+                    val updatedScore = existingScore?.let {
+                        ScoreEntity(
+                            score = it.score + scoreEntity.score,
+                            userId = scoreEntity.userId,
+                            date = scoreEntity.date
+                        )
+                    } ?: scoreEntity
+                    repository.insertScoreData(updatedScore)
+                } else {
+                    repository.insertScoreData(scoreEntity)
+                }
+            } catch (e: Exception) {
+                Log.e("GameViewModel", "Error inserting score data", e)
+            }
         }
     }
 }
