@@ -69,5 +69,6 @@ dependencies {
     ksp("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
 
+    implementation("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
 
 }

@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.QuizActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <fragment
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
-</FrameLayout>
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:backgroundColor="?android:colorBackground"
+        app:iconSize="25dp"
+        app:iconTint="?colorOnSurface"
+        app:iconTintActive="?colorOnBackground"
+        app:indicatorColor="?colorSurfaceVariant"
+        app:indicatorRadius="12dp"
+        app:itemFontFamily="@font/poppins_medium"
+        app:menu="@menu/bottom_nav"
+        app:textColor="?colorOnBackground"
+        app:textSize="14sp" />
+
+</LinearLayout>
