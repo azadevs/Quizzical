@@ -33,12 +33,12 @@ class GameOverFragmentDialog : DialogFragment(R.layout.fragment_dialog_game_over
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDialogGameOverBinding.bind(view)
 
-        binding.btnBack.setOnClickListener {
+        binding.btnBackHome.setOnClickListener {
             dismiss()
             findNavController().navigate(R.id.action_gameOverFragmentDialog_to_homeFragment)
         }
 
-        binding.btnPlayAgain.setOnClickListener {
+        binding.btnReplay.setOnClickListener {
             dismiss()
             findNavController().navigate(
                 R.id.gameFragment,
@@ -54,10 +54,16 @@ class GameOverFragmentDialog : DialogFragment(R.layout.fragment_dialog_game_over
     private fun configureUi() {
         val data = args.game
         binding.apply {
-            tvTotalQuestionsCount.text = Constants.QUESTIONS_AMOUNT.toString()
-            tvCorrectAnswersCount.text = data.correctAnswersCount.toString()
-            tvIncorrectAnswersCount.text = data.incorrectAnswersCount.toString()
-            tvCategoryName.text = data.category
+            tvScoreInfo.text = getString(
+                R.string.text_score_info,
+                data.correctAnswersCount,
+                Constants.QUESTIONS_AMOUNT
+            )
+            tvCorrectCount.text =
+                getString(R.string.text_correct, data.correctAnswersCount)
+            tvIncorrectCount.text =
+                getString(R.string.text_incorrect, data.incorrectAnswersCount)
+            tvCategory.text = getString(R.string.text_category, data.category)
         }
     }
 
