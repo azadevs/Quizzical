@@ -31,6 +31,9 @@ object Constants {
     const val PREFS_USER_ID = "userId"
     const val PREFS_IS_HAVE = "isHave"
 
+    const val WEEK_MILLISECONDS = 604800000
+    const val MONTH_MILLISECONDS = 2629746000
+
     private fun getMonth(month: Int, context: Context): String {
         return when (month) {
             1 -> getString(context, R.string.month_january)

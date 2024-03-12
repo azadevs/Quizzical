@@ -33,7 +33,6 @@
     <string name="text_email">Email</string>
     <string name="text_date_of_birth">Date of birth</string>
 
-
     // Months
     <string name="month_january">JAN</string>
     <string name="month_february">FEB</string>
@@ -47,13 +46,21 @@
     <string name="month_october">OCT</string>
     <string name="month_november">NOV</string>
     <string name="month_december">DEC</string>
+
     <string name="text_create">Create</string>
     <string name="text_cup_image">Cup image</string>
     <string name="text_quiz_result">Quiz Result</string>
-    <string name="text_category">Category :</string>
-    <string name="text_incorrect">Incorrect :</string>
-    <string name="text_correct">Correct :</string>
-    <string name="tex_total">Total :</string>
     <string name="text_play_again">Play again</string>
     <string name="text_back_to_home">Back to home</string>
+    <string name="text_home">Home</string>
+    <string name="text_leaderboard">Leaderboard</string>
+    <string name="text_congratulation">Congratulation!</string>
+    <string name="text_correct">%1$d Correct</string>
+    <string name="text_incorrect">%1$d Wrong</string>
+    <string name="text_score_info">You got the %1$d out of %2$d</string>
+    <string name="text_replay_quiz">Replay Quiz</string>
+    <string name="description_incorrect_icon">Incorrect icon</string>
+    <string name="description_correct_icon">Correct icon</string>
+    <string name="text_category">Category - %1$s</string>
+    <string name="text_no_data">No data</string>
 </resources>

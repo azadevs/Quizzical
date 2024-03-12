@@ -71,4 +71,6 @@ dependencies {
 
     implementation("com.github.ibrahimsn98:SmoothBottomBar:1.7.9")
 
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 }
