@@ -5,7 +5,7 @@ import android.app.DatePickerDialog
 import android.azadev.quizzical.R
 import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.databinding.FragmentEditProfileBinding
-import android.azadev.quizzical.ui.profile.ProfileViewModel
+import android.azadev.quizzical.ui.profile.viewmodel.ProfileViewModel
 import android.azadev.quizzical.utils.Constants
 import android.content.Intent
 import android.content.SharedPreferences

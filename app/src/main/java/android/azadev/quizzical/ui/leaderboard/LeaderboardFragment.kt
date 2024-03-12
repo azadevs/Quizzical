@@ -2,6 +2,7 @@ package android.azadev.quizzical.ui.leaderboard
 
 import android.azadev.quizzical.R
 import android.azadev.quizzical.databinding.FragmentLeaderboardBinding
+import android.azadev.quizzical.ui.leaderboard.adapter.LeaderboardPagerAdapter
 import android.azadev.quizzical.utils.Constants
 import android.os.Bundle
 import android.view.View
