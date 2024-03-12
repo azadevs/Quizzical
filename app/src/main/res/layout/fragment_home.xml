@@ -40,106 +40,108 @@
                 app:shapeAppearance="@style/CircleShapeableImageView" />
         </com.google.android.material.appbar.MaterialToolbar>
 
+        <ImageView
+            android:id="@+id/iv_rank"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/description_trophy_image"
+            android:elevation="8dp"
+            android:src="@drawable/ic_trophy"
+            app:layout_constraintBottom_toBottomOf="@id/card_rank"
+            app:layout_constraintEnd_toEndOf="@id/iv_line_vertical"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="@id/card_rank"
+            app:layout_constraintTop_toTopOf="@id/card_rank" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_rank"
+            style="@style/HomeScreenTextViewStyle"
+            android:elevation="8dp"
+            android:text="@string/text_ranking"
+            app:layout_constraintBottom_toTopOf="@id/tv_rank_count"
+            app:layout_constraintEnd_toEndOf="@id/iv_line_vertical"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@id/iv_rank"
+            app:layout_constraintTop_toTopOf="@id/card_rank" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_rank_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/_0"
+            android:textColor="?colorPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/card_rank"
+            app:layout_constraintStart_toEndOf="@id/iv_rank"
+            app:layout_constraintStart_toStartOf="@id/tv_rank"
+            app:layout_constraintTop_toBottomOf="@id/tv_rank" />
+
+        <ImageView
+            android:id="@+id/iv_line_vertical"
+            android:layout_width="2dp"
+            android:layout_height="?actionBarSize"
+            android:background="#CDCDCD"
+            android:contentDescription="@string/description_vertical_line"
+            android:elevation="7dp"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/card_rank"
+            app:layout_constraintEnd_toEndOf="@id/card_rank"
+            app:layout_constraintStart_toStartOf="@id/card_rank"
+            app:layout_constraintTop_toTopOf="@id/card_rank" />
+
+        <ImageView
+            android:id="@+id/iv_point"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/description_coin_image"
+            android:elevation="8dp"
+            android:src="@drawable/ic_coin"
+            app:layout_constraintBottom_toBottomOf="@id/card_rank"
+            app:layout_constraintEnd_toEndOf="@id/card_rank"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="@id/iv_line_vertical"
+            app:layout_constraintTop_toTopOf="@id/card_rank" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_point"
+            style="@style/HomeScreenTextViewStyle"
+            android:elevation="8dp"
+            android:text="@string/text_points"
+            app:layout_constraintBottom_toTopOf="@id/tv_point_count"
+            app:layout_constraintEnd_toEndOf="@id/card_rank"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toEndOf="@id/iv_point"
+            app:layout_constraintTop_toTopOf="@id/card_rank" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_point_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/_0"
+            android:textColor="?colorPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/card_rank"
+            app:layout_constraintStart_toEndOf="@id/iv_rank"
+            app:layout_constraintStart_toStartOf="@id/tv_point"
+            app:layout_constraintTop_toBottomOf="@id/tv_point" />
+
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_rank"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
+            android:layout_height="70dp"
+            app:layout_constraintWidth_percent="0.95"
             app:cardCornerRadius="15dp"
             app:cardElevation="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="@id/toolbar"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintVertical_bias="0.04">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="4dp">
-
-                <ImageView
-                    android:id="@+id/iv_rank"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="@string/description_trophy_image"
-                    android:src="@drawable/ic_trophy"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/iv_line_vertical"
-                    app:layout_constraintHorizontal_bias="0.15"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_rank"
-                    style="@style/HomeScreenTextViewStyle"
-                    android:text="@string/text_ranking"
-                    app:layout_constraintBottom_toTopOf="@id/tv_rank_count"
-                    app:layout_constraintEnd_toEndOf="@id/iv_line_vertical"
-                    app:layout_constraintHorizontal_bias="0.2"
-                    app:layout_constraintStart_toEndOf="@id/iv_rank"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_rank_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/_0"
-                    android:textColor="?colorPrimary"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_rank"
-                    app:layout_constraintStart_toStartOf="@id/tv_rank"
-                    app:layout_constraintTop_toBottomOf="@id/tv_rank" />
-
-                <ImageView
-                    android:id="@+id/iv_line_vertical"
-                    android:layout_width="2dp"
-                    android:layout_height="?actionBarSize"
-                    android:background="#CDCDCD"
-                    android:contentDescription="@string/description_vertical_line"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/iv_point"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:contentDescription="@string/description_coin_image"
-                    android:src="@drawable/ic_coin"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.134"
-                    app:layout_constraintStart_toStartOf="@id/iv_line_vertical"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_point"
-                    style="@style/HomeScreenTextViewStyle"
-                    android:text="@string/text_points"
-                    app:layout_constraintBottom_toTopOf="@id/tv_point_count"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.2"
-                    app:layout_constraintStart_toEndOf="@id/iv_point"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tv_point_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/_0"
-                    android:textColor="?colorPrimary"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_rank"
-                    app:layout_constraintStart_toStartOf="@id/tv_point"
-                    app:layout_constraintTop_toBottomOf="@id/tv_point" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintVertical_bias="0.04" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_lets_play"
