@@ -162,7 +162,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     }
 
     private fun gameOver() {
-        viewModel.insertScoreData(
+        viewModel.upsertScoreData(
             ScoreEntity(
                 score = correctAnswerCount,
                 userId = preferences.getLong(Constants.PREFS_USER_ID, 0).toInt(),

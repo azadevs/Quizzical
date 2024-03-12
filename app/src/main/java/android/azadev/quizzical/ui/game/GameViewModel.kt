@@ -139,7 +139,7 @@ class GameViewModel @Inject constructor(
         timerJob = null
     }
 
-    fun insertScoreData(scoreEntity: ScoreEntity) {
+    fun upsertScoreData(scoreEntity: ScoreEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 if (repository.hasScoreData()) {
@@ -148,10 +148,11 @@ class GameViewModel @Inject constructor(
                         ScoreEntity(
                             score = it.score + scoreEntity.score,
                             userId = scoreEntity.userId,
-                            date = scoreEntity.date
+                            date = scoreEntity.date,
+                            id = it.id
                         )
                     } ?: scoreEntity
-                    repository.insertScoreData(updatedScore)
+                    repository.updateScoreData(updatedScore)
                 } else {
                     repository.insertScoreData(scoreEntity)
                 }
