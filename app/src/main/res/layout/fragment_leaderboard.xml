@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?colorSecondary">
+    android:background="?colorSecondary"
+    android:orientation="vertical"
+    tools:context=".ui.leaderboard.LeaderboardFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -11,46 +14,45 @@
         android:layout_height="wrap_content"
         android:padding="8dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back"
         app:title="@string/leaderboard"
         app:titleCentered="true"
         app:titleTextAppearance="@style/ToolbarTitleStyle"
         app:titleTextColor="@android:color/white" />
 
-    <FrameLayout
-        android:id="@+id/frame_rank"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/cut_top_corners_frame"
-        android:backgroundTint="?android:colorBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.7" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:background="@drawable/cut_corners_tab_background"
-        app:layout_constraintBottom_toTopOf="@id/frame_rank"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintVertical_bias="0.2"
-        app:layout_constraintWidth_percent="0.9"
         app:tabBackground="@drawable/tab_background"
         app:tabGravity="fill"
         app:tabIndicator="@null"
         app:tabIndicatorAnimationMode="elastic"
+        app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="?colorOnPrimary"
-        app:tabTextAppearance="@style/TabTextAppearance"/>
+        app:tabTextAppearance="@style/TabTextAppearance" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager"
+    <FrameLayout
+        android:id="@+id/frame_rank"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/frame_rank" />
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:background="@drawable/cut_top_corners_frame"
+        android:backgroundTint="?android:colorBackground"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/frame_rank" />
+
+    </FrameLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
