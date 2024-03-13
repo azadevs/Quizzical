@@ -114,6 +114,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
                 id = preferences.getLong(Constants.PREFS_USER_ID, 0).toInt()
             )
             viewModel.updateUserData(user)
+            preferences.edit().putString(Constants.PREFS_USER_NAME, user.fName).apply()
             Snackbar.make(binding.root, "Updated your data", Snackbar.LENGTH_SHORT).show()
             findNavController().popBackStack()
         }

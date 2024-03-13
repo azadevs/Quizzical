@@ -25,7 +25,7 @@ class LeaderboardUserAdapter(
             val user = userAndScore.userEntity
             val score = userAndScore.scoreEntity
             if (user.userImageUri.isEmpty()) {
-                binding.ivUserImage.setImageResource(R.drawable.placeholder)
+                binding.ivUserImage.setImageResource(R.drawable.ic_person_gray)
             } else {
                 Glide.with(binding.root).load(user.userImageUri)
                     .into(binding.ivUserImage)
