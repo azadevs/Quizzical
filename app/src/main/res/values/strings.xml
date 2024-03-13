@@ -63,4 +63,5 @@
     <string name="description_correct_icon">Correct icon</string>
     <string name="text_category">Category - %1$s</string>
     <string name="text_no_data">No data</string>
+    <string name="text_toolbar_name">Hi, %1$s</string>
 </resources>

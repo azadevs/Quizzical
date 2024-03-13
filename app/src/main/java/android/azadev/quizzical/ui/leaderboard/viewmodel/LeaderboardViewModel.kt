@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -31,6 +32,7 @@ class LeaderboardViewModel @Inject constructor(
 
     fun getAllUsers(category: String) {
         viewModelScope.launch(IO) {
+            if (repository.hasScoreData() && repository.hasUserData()) {
             val filteredFlow = when (category) {
                 "All time" -> repository.getUserAndScores()
                 "This week" -> repository.getUserAndScores().map { list ->
@@ -49,9 +51,11 @@ class LeaderboardViewModel @Inject constructor(
                     throw IllegalArgumentException("Invalid category: $category")
                 }
             }
-            filteredFlow
-                .onEach { _usersAndScoresFlow.value = it }
-                .launchIn(viewModelScope)
+                filteredFlow
+                    .filterNotNull()
+                    .onEach { _usersAndScoresFlow.value = it }
+                    .launchIn(viewModelScope)
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ import android.azadev.quizzical.R
 import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.databinding.FragmentCreateProfileBinding
 import android.azadev.quizzical.ui.profile.viewmodel.ProfileViewModel
+import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.Constants.PREFS_IS_HAVE
 import android.azadev.quizzical.utils.Constants.makeDateToString
 import android.content.Intent
@@ -102,6 +103,7 @@ class CreateProfileFragment : Fragment(R.layout.fragment_create_profile) {
                 dateOfBirth = dateOfBirth
             )
             viewModel.insertUserData(user)
+            prefs.edit().putString(Constants.PREFS_USER_NAME, user.fName).apply()
             Snackbar.make(binding.root, "Added your data", Snackbar.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_createProfileFragment_to_homeFragment)
         }
