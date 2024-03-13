@@ -27,6 +27,7 @@ object Constants {
 
     const val TOTAL_SECONDS = 20
 
+    const val PREFS_USER_NAME: String = "userName"
     const val PREFS_SCORE_ID = "scoreId"
     const val PREFS_USER_ID = "userId"
     const val PREFS_IS_HAVE = "isHave"

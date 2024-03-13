@@ -47,6 +47,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnClickListener {
         if (!bool) {
             findNavController().navigate(R.id.action_homeFragment_to_createProfileFragment)
         }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,12 +64,20 @@ class HomeFragment : Fragment(R.layout.fragment_home), OnClickListener {
 
         binding.cardSport.setOnClickListener(this)
 
+
+        changeToolbarTitle()
+
         viewModel.scoreFlow.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .filterNotNull()
             .distinctUntilChanged()
             .onEach { score ->
                 configureScoreCard(score)
             }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun changeToolbarTitle() {
+        val userName = preferences.getString(Constants.PREFS_USER_NAME, "NoName")
+        binding.toolbar.title = getString(R.string.text_toolbar_name, userName)
     }
 
     private fun configureScoreCard(score: ScoreEntity) {
