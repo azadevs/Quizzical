@@ -5,6 +5,9 @@ import android.azadev.quizzical.R
 import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 import android.azadev.quizzical.databinding.FragmentGameBinding
+import android.azadev.quizzical.ui.game.model.GameScoreData
+import android.azadev.quizzical.ui.game.model.GameState
+import android.azadev.quizzical.ui.game.viewmodel.GameViewModel
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.UIExtensions.inVisible
 import android.azadev.quizzical.utils.UIExtensions.visible

@@ -3,6 +3,7 @@ package android.azadev.quizzical.ui.home
 import android.azadev.quizzical.R
 import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.databinding.FragmentHomeBinding
+import android.azadev.quizzical.ui.home.viewmodel.HomeViewModel
 import android.azadev.quizzical.utils.Categories
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.isNetworkAvailable

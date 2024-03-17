@@ -1,4 +1,4 @@
-package android.azadev.quizzical.ui.game
+package android.azadev.quizzical.ui.game.model
 
 import java.io.Serializable
 

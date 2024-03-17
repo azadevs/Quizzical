@@ -1,8 +1,9 @@
-package android.azadev.quizzical.ui.game
+package android.azadev.quizzical.ui.game.viewmodel
 
 import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 import android.azadev.quizzical.repository.QuizRepository
+import android.azadev.quizzical.ui.game.model.GameState
 import android.azadev.quizzical.utils.Categories
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.Constants.QUESTIONS_AMOUNT
