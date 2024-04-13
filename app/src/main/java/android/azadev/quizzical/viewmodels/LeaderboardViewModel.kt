@@ -1,4 +1,4 @@
-package android.azadev.quizzical.ui.leaderboard.viewmodel
+package android.azadev.quizzical.viewmodels
 
 import android.azadev.quizzical.data.local.entity.UserAndScore
 import android.azadev.quizzical.repository.QuizRepository

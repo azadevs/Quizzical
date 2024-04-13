@@ -1,4 +1,4 @@
-package android.azadev.quizzical.ui.profile.viewmodel
+package android.azadev.quizzical.viewmodels
 
 import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.repository.QuizRepository

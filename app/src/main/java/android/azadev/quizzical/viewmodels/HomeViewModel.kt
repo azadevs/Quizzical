@@ -1,4 +1,4 @@
-package android.azadev.quizzical.ui.home.viewmodel
+package android.azadev.quizzical.viewmodels
 
 import android.azadev.quizzical.repository.QuizRepository
 import androidx.lifecycle.ViewModel

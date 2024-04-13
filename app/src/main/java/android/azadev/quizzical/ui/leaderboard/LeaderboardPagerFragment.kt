@@ -4,7 +4,7 @@ import android.azadev.quizzical.R
 import android.azadev.quizzical.data.local.entity.UserAndScore
 import android.azadev.quizzical.databinding.FragmentLeaderboardPagerBinding
 import android.azadev.quizzical.ui.leaderboard.adapter.LeaderboardUserAdapter
-import android.azadev.quizzical.ui.leaderboard.viewmodel.LeaderboardViewModel
+import android.azadev.quizzical.viewmodels.LeaderboardViewModel
 import android.azadev.quizzical.utils.UIExtensions.inVisible
 import android.azadev.quizzical.utils.UIExtensions.visible
 import android.os.Bundle

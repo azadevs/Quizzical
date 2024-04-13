@@ -1,9 +1,8 @@
-package android.azadev.quizzical.ui.game.viewmodel
+package android.azadev.quizzical.viewmodels
 
 import android.azadev.quizzical.data.local.entity.ScoreEntity
 import android.azadev.quizzical.data.remote.response.DetailedAnswerResult
 import android.azadev.quizzical.repository.QuizRepository
-import android.azadev.quizzical.ui.game.model.GameState
 import android.azadev.quizzical.utils.Categories
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.Constants.QUESTIONS_AMOUNT
@@ -162,4 +161,13 @@ class GameViewModel @Inject constructor(
             }
         }
     }
+
 }
+
+sealed interface GameState<out T> {
+    data object Loading : GameState<Nothing>
+    data class Error(val message: String) : GameState<Nothing>
+    data class Success<T>(val data: T) : GameState<T>
+    data object GameOver : GameState<Nothing>
+}
+

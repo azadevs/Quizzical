@@ -7,7 +7,7 @@ import android.azadev.quizzical.BuildConfig
 import android.azadev.quizzical.R
 import android.azadev.quizzical.data.local.entity.UserEntity
 import android.azadev.quizzical.databinding.FragmentCreateProfileBinding
-import android.azadev.quizzical.ui.profile.viewmodel.ProfileViewModel
+import android.azadev.quizzical.viewmodels.ProfileViewModel
 import android.azadev.quizzical.utils.Constants
 import android.azadev.quizzical.utils.Constants.PREFS_IS_HAVE
 import android.azadev.quizzical.utils.Constants.makeDateToString
