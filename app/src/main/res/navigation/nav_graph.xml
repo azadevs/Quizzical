@@ -73,7 +73,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="Game"
-            app:argType="android.azadev.quizzical.ui.game.GameScoreData" />
+            app:argType="android.azadev.quizzical.data.model.GameScoreData" />
     </dialog>
     <fragment
         android:id="@+id/leaderboardFragment"
