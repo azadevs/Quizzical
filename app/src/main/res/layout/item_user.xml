@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    app:cardElevation="0dp"
     android:layout_height="?actionBarSize"
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="8dp"
-    app:cardCornerRadius="15dp">
+    app:cardCornerRadius="15dp"
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,9 +27,10 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_user_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
+            android:scaleType="centerCrop"
             app:shapeAppearance="@style/CircleShapeableImageView"
             tool:src="@tools:sample/avatars" />
 
