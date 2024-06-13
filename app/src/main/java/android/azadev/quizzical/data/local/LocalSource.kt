@@ -63,8 +63,6 @@ class LocalSource @Inject constructor(
         )
     }
 
-    fun getUserAndScore() = userDao.getUserAndScores()
-
     fun hasUserData() = userDao.hasUserData()
 
     fun hasScoreData() = scoreDao.hasScoreData()
