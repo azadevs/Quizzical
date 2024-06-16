@@ -3,8 +3,7 @@
 Welcome to Quizzical App! This is an engaging quiz application built for Android, incorporating several powerful libraries and components for a seamless user experience.
 
 ## Screenshots
- <img src="https://imgur.com/ChgW4io.png" width="250"> <img src="https://imgur.com/roQPmY9.png" width="250">
-<img src="https://imgur.com/ySY7yqf.png" width="250"> <img src="https://imgur.com/yMBM4kC.png" width="250">
+ <img src="https://imgur.com/ChgW4io.png" width="250"> <img src="https://imgur.com/roQPmY9.png" width="250"> <img src="https://imgur.com/yMBM4kC.png" width="250">
 <img src="https://imgur.com/AbhBLMR.png" width="250"> <img src="https://imgur.com/LdtnCZQ.png" width="250">
 <img src="https://imgur.com/K7vHjbL.png" width="250"> <img src="https://imgur.com/hWoEaQZ.png" width="250">
 <img src="https://imgur.com/Sx9ANM9.png" width="250">  
